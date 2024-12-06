@@ -10,6 +10,7 @@ const AuthPage = ({ type }) => {
     name: type === 'signup' ? '' : null,
   });
 
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -20,8 +21,17 @@ const AuthPage = ({ type }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData); // Handle authentication logic here
-    navigate('/home'); // Redirect to /home after form submission
+    console.log(formData); 
+
+    const userData={
+      email:formData.email,
+      role:formData.email==="admin123@verbomeet.com"?"admin":"user",
+     };
+     console.log(userData);
+     
+  
+     localStorage.setItem("user",JSON.stringify(userData))
+    navigate('/home'); 
   };
 
   return (

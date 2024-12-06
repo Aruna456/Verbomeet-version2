@@ -1,7 +1,19 @@
-import React from "react";
-import {Link} from 'react-router-dom'
+import {useEffect} from "react";
+import {Link,useNavigate} from 'react-router-dom'
 const Navbar = () => {
+  // const navigate=useNavigate();
+  const user=JSON.parse(localStorage.getItem("user"))
+  const isAdmin=user?.role=="admin"
+
+  //  useEffect(()=>{
+
+  //    if(isAdmin)
+  //    {
+  //      navigate('/adminprofile');
+  //    }
+  //  },[isAdmin])
   return (
+
     <nav className="landingbg text-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -24,7 +36,7 @@ const Navbar = () => {
             </a>
 
             {/* Profile Photo */}
-            <Link to="/profile">
+            <Link to={isAdmin?"/adminprofile":"/profile"}>
             <a className="flex items-center">
               <img
                 src="https://via.placeholder.com/40" // Replace with user profile photo URL

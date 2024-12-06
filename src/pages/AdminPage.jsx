@@ -1,42 +1,28 @@
-import {useEffect} from 'react';
-import { Link,useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
-const Home = () => {
+const AdminPage = () => {
   
-  const navigate=useNavigate();
-  const user=JSON.parse(localStorage.getItem("user"));
-  const isAdmin=user?.role=="admin";   
   
-   useEffect(()=>{
-
-     if(isAdmin)
-     {
-       navigate('/adminhome')
-     }
-    
-   },[isAdmin])
   return (
     <>
-      {/* Header */}
       <Navbar />
 
-      {/* Hero Section */}
       <section
         id="Home"
         className="w-full h-[60vh] landingbg flex items-center justify-center text-center text-white"
       >
         <div className="px-6">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Discover Engaging Debates
+           Welcome Admin!
           </h1>
           <p className="text-lg md:text-xl opacity-90">
-            Sharpen your skills, challenge your thoughts, and connect with
-            like-minded people!
+          Lead the way, empower the voices, and shape meaningful debates!
           </p>
-          <Link to='/debates'>
+          <Link to='/admindebates'>
           <button className="mt-6 px-8 py-4 bg-white text-purple-700 rounded-lg font-semibold shadow-lg hover:scale-105 transition-transform">
-            Explore Debates
+            Manage Debates
           </button>
           </Link>
         </div>
@@ -126,4 +112,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default AdminPage;
